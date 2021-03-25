@@ -1,0 +1,71 @@
+.btn {
+  color: #fff;
+  background-color: var(--primaryPurple);
+  border-radius: 500px;
+  border: none;
+  cursor: pointer;
+
+  font-weight: 700;
+
+  padding: 1.6rem 2rem;
+}
+
+.btn:hover {
+  background-color: var(--lightPurple);
+}
+
+.btn-secondary--light {
+  background-color: var(--softWhite);
+  color: var(--greyPurple);
+}
+
+.btn-secondary--light:hover {
+  background-color: var(--lightGray);
+  color: var(--greyPurple);
+}
+
+.btn-secondary--dark {
+  background-color: var(--lightDark);
+  color: var(--lightGray);
+}
+
+.btn-secondary--dark:hover {
+  background-color: var(--lightGray);
+  color: white;
+}
+
+.btn-third--light {
+  background-color: var(--primaryDark);
+  color: var(--grey);
+}
+
+.btn-third--light:hover {
+  background-color: var(--black);
+}
+
+.btn-third--dark {
+  background-color: var(--primaryDark);
+  color: var(--lightGray);
+}
+
+.btn-third--dark:hover {
+  background-color: var(--lightBlack);
+}
+
+.btn-fourth {
+  background-color: var(--softWhite);
+  color: var(--greyPurple);
+}
+
+.btn-fourth:hover {
+  background-color: var(--lightGray);
+}
+
+.btn--danger {
+  background-color: var(--red);
+  color: white;
+}
+
+.btn--danger:hover {
+  background-color: var(--lightRed);
+}
