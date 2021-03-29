@@ -13,7 +13,7 @@
   --black: #0c0e16;
   --red: #ec5757;
   --lightRed: #ff9797;
-  --light: #f8f8f8;
+  --light: #f8f8fb;
   --lightBlack: #141625;
 }
 
@@ -29,6 +29,11 @@ html {
   font-weight: 400;
   line-height: 15px;
   letter-spacing: -0.25;
+}
+
+body {
+  background-origin: var(--light);
+  position: relative;
 }
 
 h1,

@@ -4,9 +4,9 @@ const InvoiceItem = ({ invoice }) => {
   return (
     <li className="invoice-item">
       <h3>{invoice.id}</h3>
-      <p>{invoice.paymentDue}</p>
-      <p>{invoice.clientName}</p>
-      <p>{invoice.total}</p>
+      <p className="invoice-item__info">{invoice.paymentDue}</p>
+      <p className="invoice-item__info">{invoice.clientName}</p>
+      <h2>{invoice.total}</h2>
       <Status status={invoice.status} />
     </li>
   );

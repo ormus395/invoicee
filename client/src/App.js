@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 
 import NavBar from "./components/NavBar";
 import InvoiceList from "./components/InvoiceList";
-//
+
+import Modal from "./components/Modal";
+import Backdrop from "./components/Backdrop";
+
 function App() {
   const [error, setError] = useState(false);
   const [user, setUser] = useState(null);
@@ -15,6 +18,9 @@ function App() {
     <div className="App">
       <NavBar />
       <InvoiceList />
+      <Backdrop>
+        <Modal />
+      </Backdrop>
     </div>
   );
 }

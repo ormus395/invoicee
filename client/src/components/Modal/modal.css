@@ -1,0 +1,27 @@
+.modal {
+  background-color: white;
+  border-radius: 15px;
+  padding: 2.75rem;
+
+  width: 87%;
+  max-width: 480px;
+}
+
+.modal__title {
+  margin-bottom: 2rem;
+}
+
+.modal__text {
+  color: var(--grey);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal button:first-child {
+  margin-right: 8px;
+}
