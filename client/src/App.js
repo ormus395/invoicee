@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
 import NavBar from "./components/NavBar";
-import Button from "./components/Button";
-
+import InvoiceList from "./components/InvoiceList";
 //
 function App() {
   const [error, setError] = useState(false);
@@ -15,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Button variant="fourth">Delete</Button>
+      <InvoiceList />
     </div>
   );
 }
