@@ -2,6 +2,12 @@ import axios from "axios";
 
 const baseUrl = "/api/invoices";
 
+let token = null;
+
+const setToken = (newToken) => {
+  token = `bearer ${newToken}`;
+};
+
 const getInvoices = async () => {
   let invoices = await axios.get(`${baseUrl}`);
 
@@ -14,7 +20,11 @@ const getInvoice = async (invoiceId) => {
   return invoice;
 };
 
-const createInvoice = async () => {};
+const createInvoice = async () => {
+  const config = {
+    headers: { Authorization: token },
+  };
+};
 
 const updateInvoice = async (invoiceId) => {};
 
@@ -26,4 +36,5 @@ export default {
   createInvoice,
   updateInvoice,
   deleteInvoice,
+  setToken,
 };

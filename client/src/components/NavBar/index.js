@@ -2,7 +2,8 @@ import "./navbar.css";
 import logo from "../../assets/logo.svg";
 import moon from "../../assets/icon-moon.svg";
 import avatar from "../../assets/image-avatar.jpg";
-const NavBar = () => {
+
+const NavBar = (props) => {
   return (
     <nav className="navbar">
       <div className="logo">
@@ -11,9 +12,16 @@ const NavBar = () => {
       <div className="theme-toggle">
         <img src={moon} alt="" />
       </div>
-      <div className="avatar">
-        <img src={avatar} alt="" />
-      </div>
+      {props.user ? (
+        <div className="avatar">
+          <img src={avatar} alt="" />
+        </div>
+      ) : (
+        <div>
+          <a href="">Login</a>
+          <a href="">Register</a>
+        </div>
+      )}
     </nav>
   );
 };
