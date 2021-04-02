@@ -1,17 +1,16 @@
 import axios from "axios";
+import authService from "./auth";
 
-const baseUrl = "/api/invoices";
-
-let token = null;
-
-const setToken = (newToken) => {
-  token = `bearer ${newToken}`;
-};
+const baseUrl = "/invoices";
 
 const getInvoices = async () => {
-  let invoices = await axios.get(`${baseUrl}`);
+  const token = authService.getUserToken();
+  const config = {
+    headers: { Authorization: `bearer ${token}` },
+  };
+  let response = await axios.get(`${baseUrl}`, config);
 
-  return invoices;
+  return response.data;
 };
 
 const getInvoice = async (invoiceId) => {
@@ -22,7 +21,7 @@ const getInvoice = async (invoiceId) => {
 
 const createInvoice = async () => {
   const config = {
-    headers: { Authorization: token },
+    headers: { Authorization: authService.token },
   };
 };
 
@@ -36,5 +35,4 @@ export default {
   createInvoice,
   updateInvoice,
   deleteInvoice,
-  setToken,
 };

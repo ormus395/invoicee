@@ -4,16 +4,16 @@ import authService from "./services/auth";
 
 import NavBar from "./components/NavBar";
 import LoginForm from "./components/LoginForm";
+import Dashboard from "./views/Dashboard";
 
 function App() {
   const [error, setError] = useState(false);
   const [user, setUser] = useState(null);
-  const [invoices, setInvoices] = useState([]);
 
   // on app load, determine if the user is logged in or not
   // store the JWT in local storage (this inst the safest option)
   useEffect(() => {
-    const loggedUser = authService.getUserToken();
+    const loggedUser = authService.getUser();
     console.log(loggedUser);
 
     if (loggedUser) {
@@ -35,7 +35,7 @@ function App() {
   return (
     <div className="App">
       <NavBar user={user} />
-      {user ? <h1>Logged in</h1> : <LoginForm handleLogin={handleLogin} />}
+      {user ? <Dashboard /> : <LoginForm handleLogin={handleLogin} />}
     </div>
   );
 }
