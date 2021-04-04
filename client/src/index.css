@@ -66,3 +66,8 @@ h3 {
 img {
   width: 100%;
 }
+
+/* helper classes */
+.flex {
+  display: flex;
+}

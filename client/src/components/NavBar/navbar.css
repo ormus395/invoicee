@@ -32,6 +32,11 @@
   padding: 2rem 2.2rem;
 }
 
+.avatar-container {
+  justify-content: center;
+  align-items: center;
+}
+
 .avatar {
   display: flex;
   justify-content: center;

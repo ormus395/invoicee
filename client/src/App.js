@@ -37,15 +37,6 @@ function App() {
     <div className="App">
       <NavBar user={user} />
       {user ? <Dashboard /> : <LoginForm handleLogin={handleLogin} />}
-      <Dropdown
-        dropdownState={{
-          closed: true,
-        }}
-      >
-        <a>Dude</a>
-        <a href="">Man</a>
-        <a href="">Gorl</a>
-      </Dropdown>
     </div>
   );
 }

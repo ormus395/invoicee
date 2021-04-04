@@ -3,6 +3,8 @@ import logo from "../../assets/logo.svg";
 import moon from "../../assets/icon-moon.svg";
 import avatar from "../../assets/image-avatar.jpg";
 
+import Dropdown from "../Dropdown";
+
 const NavBar = (props) => {
   return (
     <nav className="navbar">
@@ -13,8 +15,19 @@ const NavBar = (props) => {
         <img src={moon} alt="" />
       </div>
       {props.user ? (
-        <div className="avatar">
-          <img src={avatar} alt="" />
+        <div className="flex avatar-container">
+          <div className="avatar">
+            <img src={avatar} alt="" />
+          </div>
+          <Dropdown
+            dropdownState={{
+              closed: true,
+            }}
+          >
+            <a href="#">Your Invoices</a>
+            <a href="#">Profile</a>
+            <a href="#">Logout</a>
+          </Dropdown>
         </div>
       ) : (
         <div>
