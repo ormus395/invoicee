@@ -1,0 +1,27 @@
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-toggle {
+  background: url(../../assets/icon-arrow-down.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  height: 8px;
+  width: 10px;
+}
+
+.dropdown-hide {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}

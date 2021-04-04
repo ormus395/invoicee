@@ -5,6 +5,7 @@ import authService from "./services/auth";
 import NavBar from "./components/NavBar";
 import LoginForm from "./components/LoginForm";
 import Dashboard from "./views/Dashboard";
+import Dropdown from "./components/Dropdown";
 
 function App() {
   const [error, setError] = useState(false);
@@ -36,6 +37,15 @@ function App() {
     <div className="App">
       <NavBar user={user} />
       {user ? <Dashboard /> : <LoginForm handleLogin={handleLogin} />}
+      <Dropdown
+        dropdownState={{
+          closed: true,
+        }}
+      >
+        <a>Dude</a>
+        <a href="">Man</a>
+        <a href="">Gorl</a>
+      </Dropdown>
     </div>
   );
 }

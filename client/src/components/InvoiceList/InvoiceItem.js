@@ -2,7 +2,7 @@ import Status from "../Status";
 
 const InvoiceItem = ({ invoice }) => {
   return (
-    <li className="invoice-item">
+    <li key={invoice.id} className="invoice-item">
       <h3>{invoice.id}</h3>
       <p className="invoice-item__info">{invoice.paymentDue}</p>
       <p className="invoice-item__info">{invoice.clientName}</p>
