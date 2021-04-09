@@ -1,10 +1,13 @@
 .invoice-item {
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 
+  width: 87%;
   padding: 2rem;
+  margin-bottom: 1rem;
 }
 
 .invoice-item__info {

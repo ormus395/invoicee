@@ -5,7 +5,6 @@ import authService from "./services/auth";
 import NavBar from "./components/NavBar";
 import LoginForm from "./components/LoginForm";
 import Dashboard from "./views/Dashboard";
-import Dropdown from "./components/Dropdown";
 
 function App() {
   const [error, setError] = useState(false);
@@ -33,9 +32,20 @@ function App() {
       console.log(err);
     }
   };
+
+  const handleLogout = () => {
+    const loggedOut = authService.logout();
+
+    if (loggedOut) {
+      console.log("issue logging out?");
+      return;
+    }
+
+    setUser(null);
+  };
   return (
     <div className="App">
-      <NavBar user={user} />
+      <NavBar user={user} handleLogout={handleLogout} />
       {user ? <Dashboard /> : <LoginForm handleLogin={handleLogin} />}
     </div>
   );

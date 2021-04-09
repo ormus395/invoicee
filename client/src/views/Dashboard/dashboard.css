@@ -1,0 +1,14 @@
+.dashboard-header {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+}
+
+.filter-container h2 {
+  padding-right: 1rem;
+}

@@ -6,6 +6,12 @@ import avatar from "../../assets/image-avatar.jpg";
 import Dropdown from "../Dropdown";
 
 const NavBar = (props) => {
+  const handleLogout = (e) => {
+    e.preventDefault();
+
+    props.handleLogout();
+  };
+
   return (
     <nav className="navbar">
       <div className="logo">
@@ -26,7 +32,9 @@ const NavBar = (props) => {
           >
             <a href="#">Your Invoices</a>
             <a href="#">Profile</a>
-            <a href="#">Logout</a>
+            <a href="#" onClick={(e) => handleLogout(e)}>
+              Logout
+            </a>
           </Dropdown>
         </div>
       ) : (

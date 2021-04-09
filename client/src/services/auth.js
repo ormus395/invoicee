@@ -12,7 +12,16 @@ const login = async (credentials) => {
   return response.data;
 };
 
-const logout = async () => {};
+const logout = () => {
+  const user = getUser();
+
+  if (user) {
+    localStorage.removeItem("user");
+    return getUser();
+  }
+
+  return user;
+};
 
 const getUser = () => {
   const user = localStorage.getItem("user");

@@ -67,6 +67,14 @@ img {
   width: 100%;
 }
 
+#root {
+  background-color: var(--light);
+}
+
+.App {
+  background-color: var(--light);
+}
+
 /* helper classes */
 .flex {
   display: flex;

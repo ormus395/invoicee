@@ -13,8 +13,8 @@
   margin-top: 2rem;
   position: absolute;
   top: 100%;
-  right: 0.5rem;
-  background-color: var(--black);
+  right: 0;
+  background-color: var(--light);
 
   z-index: 100;
 }
