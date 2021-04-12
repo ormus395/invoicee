@@ -3,6 +3,7 @@ import logo from "../../assets/logo.svg";
 import moon from "../../assets/icon-moon.svg";
 import avatar from "../../assets/image-avatar.jpg";
 
+import { Link } from "react-router-dom";
 import Dropdown from "../Dropdown";
 
 const NavBar = (props) => {
@@ -15,7 +16,9 @@ const NavBar = (props) => {
   return (
     <nav className="navbar">
       <div className="logo">
-        <img src={logo} alt="Logo" />
+        <Link to="/">
+          <img src={logo} alt="Logo" />
+        </Link>
       </div>
       <div className="theme-toggle">
         <img src={moon} alt="" />
@@ -30,17 +33,15 @@ const NavBar = (props) => {
               closed: true,
             }}
           >
-            <a href="#">Your Invoices</a>
-            <a href="#">Profile</a>
-            <a href="#" onClick={(e) => handleLogout(e)}>
-              Logout
-            </a>
+            <Link to="/dashboard">Invoices</Link>
+            <Link to="/profile">Profile</Link>
+            <button onClick={(e) => handleLogout(e)}>Logout</button>
           </Dropdown>
         </div>
       ) : (
         <div>
-          <a href="">Login</a>
-          <a href="">Register</a>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
         </div>
       )}
     </nav>
