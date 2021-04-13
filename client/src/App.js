@@ -4,8 +4,6 @@ import {
   Switch,
   Route,
   Redirect,
-  useHistory,
-  useLocation,
 } from "react-router-dom";
 
 // service imports
@@ -34,7 +32,7 @@ function App() {
     }
   }, []);
 
-  const handleLogin = async ({ email, password }) => {
+  const handleLogin = async ({ email, password }, history) => {
     try {
       const loggedUser = await authService.login({ email, password });
       console.log(loggedUser);
@@ -42,8 +40,16 @@ function App() {
 
       setUser(loggedUser);
 
-      // this is probably not ok. should find react router way to redirect
-      window.location = "/dashboard";
+      // this is probably a huge nono
+      // I decided to use the useHistory method in the login form
+      // component and pass it to this higher level function
+      // useHistory doesnt work due to context not existing
+      // in the component the BrowserRouter is defined
+      // however the login form is a child to the BrowserRouter
+      // which means i get access to the context in that component
+      // but I need access to history here, to redirect on a succesful login
+      // theres probably a better way to go about this
+      history.push("/dashboard");
     } catch (err) {
       console.log(err);
     }

@@ -1,14 +1,17 @@
 import { useState } from "react";
-
+import { useHistory } from "react-router-dom";
 const LoginForm = ({ handleLogin }) => {
   const [loginFormState, setLoginFormState] = useState({
     email: "",
     password: "",
   });
 
+  let history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(loginFormState);
+    console.log(history);
+    handleLogin(loginFormState, history);
   };
 
   const handleChange = (e) => {
