@@ -12,6 +12,7 @@ import userService from "./services/user";
 
 // component and view imports
 import NavBar from "./components/NavBar";
+import Invoice from "./views/Invoice";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import Landing from "./views/Landing";
@@ -85,9 +86,13 @@ function App() {
           <PrivateRoute path="/profile">
             <h1>Profile</h1>
           </PrivateRoute>
+          <PrivateRoute path="/dashboard/:id">
+            <Invoice />
+          </PrivateRoute>
           <PrivateRoute path="/dashboard">
             <Dashboard user={user} />
           </PrivateRoute>
+
           <Route path="/login">
             <LoginForm handleLogin={handleLogin} />
           </Route>

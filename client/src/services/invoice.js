@@ -14,9 +14,13 @@ const getInvoices = async () => {
 };
 
 const getInvoice = async (invoiceId) => {
-  let invoice = await axios.get(`${baseUrl}/${invoiceId}`);
+  const token = authService.getUserToken();
+  const config = {
+    headers: { Authorization: `bearer ${token}` },
+  };
+  let invoice = await axios.get(`${baseUrl}/${invoiceId}`, config);
 
-  return invoice;
+  return invoice.data;
 };
 
 const createInvoice = async () => {

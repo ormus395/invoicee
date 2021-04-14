@@ -10,6 +10,17 @@ const getInvoices = async (req, res, next) => {
   res.json(invoicesOwnedByUser);
 };
 
+const getInvoice = async (req, res, next) => {
+  let invoiceId = req.params.id;
+  let uId = req.user.id;
+
+  let invoice = await Invoice.findOne({ _id: invoiceId, owner: uId }).exec();
+
+  console.log(invoice);
+
+  res.json(invoice);
+};
+
 const createInvoice = async (req, res, next) => {
   const { user } = req;
   const { body } = req;
@@ -161,6 +172,7 @@ const deleteInvoice = async (req, res, next) => {
 
 module.exports = {
   getInvoices,
+  getInvoice,
   createInvoice,
   updateInvoice,
   deleteInvoice,
