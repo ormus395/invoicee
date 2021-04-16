@@ -26,7 +26,11 @@ const Button = (props) => {
     default:
   }
 
-  return <button className={buttonVariant}>{props.children}</button>;
+  return (
+    <button onClick={props.onClick} className={buttonVariant}>
+      {props.children}
+    </button>
+  );
 };
 
 export default Button;

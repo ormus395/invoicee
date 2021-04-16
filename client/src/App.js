@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,22 +6,31 @@ import {
   Redirect,
 } from "react-router-dom";
 
+// actions
+import * as actions from "./actions";
+
+// reducers
+import uiReducer from "./reducers/uiReducer";
+
 // service imports
 import authService from "./services/auth";
 import userService from "./services/user";
 
 // component and view imports
 import NavBar from "./components/NavBar";
+import Drawer from "./components/Drawer/Drawer";
 import Invoice from "./views/Invoice";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import Landing from "./views/Landing";
 import Dashboard from "./views/Dashboard";
+import InvoiceForm from "./components/InvoiceForm/InvoiceForm";
+import Button from "./components/Button";
 
 function App() {
   const [error, setError] = useState(false);
   const [user, setUser] = useState(null);
-
+  const [uiState, uiDispatch] = useReducer(uiReducer, { drawer: true });
   // on app load, determine if the user is logged in or not
   // store the JWT in local storage (this inst the safest option)
   useEffect(() => {
@@ -82,6 +91,25 @@ function App() {
     <Router>
       <div className="App">
         <NavBar user={user} handleLogout={handleLogout} />
+        {uiState.drawer ? (
+          <Drawer>
+            <InvoiceForm />
+            <div className="drawer__footer">
+              <Button
+                onClick={() => {
+                  console.log("button clicked");
+                  try {
+                    uiDispatch({ type: actions.CLOSE_DRAWER });
+                  } catch (err) {
+                    console.log(err);
+                  }
+                }}
+              >
+                Cancel
+              </Button>
+            </div>
+          </Drawer>
+        ) : null}
         <Switch>
           <PrivateRoute path="/profile">
             <h1>Profile</h1>
