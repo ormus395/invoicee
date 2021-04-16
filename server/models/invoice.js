@@ -16,12 +16,22 @@ const invoiceSchema = new Schema({
   paymentTerms: Number,
   clientName: String,
   clientEmail: String,
+  clientAddress: {
+    street1: {
+      type: String,
+    },
+    street2: String,
+    city: String,
+    state: String,
+    zipcode: String,
+  },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
   items: [],
   total: Number,
+  timestamps: true,
 });
 
 const Invoice = mongoose.model("Invoice", invoiceSchema);

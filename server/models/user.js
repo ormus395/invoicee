@@ -14,6 +14,16 @@ const userSchema = new Schema({
       ref: "Invoice",
     },
   ],
+  address: {
+    street1: {
+      type: String,
+    },
+    street2: String,
+    city: String,
+    state: String,
+    zipcode: String,
+  },
+  avatar: String,
 });
 
 userSchema.set("toJSON", {
