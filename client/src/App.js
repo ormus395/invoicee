@@ -18,6 +18,7 @@ import userService from "./services/user";
 
 // component and view imports
 import NavBar from "./components/NavBar";
+import Backdrop from "./components/Backdrop";
 import Drawer from "./components/Drawer/Drawer";
 import Invoice from "./views/Invoice";
 import LoginForm from "./components/LoginForm";
@@ -92,23 +93,25 @@ function App() {
       <div className="App">
         <NavBar user={user} handleLogout={handleLogout} />
         {uiState.drawer ? (
-          <Drawer>
-            <InvoiceForm />
-            <div className="drawer__footer">
-              <Button
-                onClick={() => {
-                  console.log("button clicked");
-                  try {
-                    uiDispatch({ type: actions.CLOSE_DRAWER });
-                  } catch (err) {
-                    console.log(err);
-                  }
-                }}
-              >
-                Cancel
-              </Button>
-            </div>
-          </Drawer>
+          <Backdrop>
+            <Drawer>
+              <InvoiceForm />
+              <div className="drawer__footer">
+                <Button
+                  onClick={() => {
+                    console.log("button clicked");
+                    try {
+                      uiDispatch({ type: actions.CLOSE_DRAWER });
+                    } catch (err) {
+                      console.log(err);
+                    }
+                  }}
+                >
+                  Cancel
+                </Button>
+              </div>
+            </Drawer>
+          </Backdrop>
         ) : null}
         <Switch>
           <PrivateRoute path="/profile">
