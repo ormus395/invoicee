@@ -20,8 +20,30 @@ const InvoiceForm = () => {
     description: "",
     items: [],
   });
+
+  const addInvoiceItem = (e) => {
+    e.preventDefault();
+    let randomId = Math.random();
+    let newItem = {
+      id: randomId,
+      itemName: "",
+      qty: 0,
+      price: 0,
+      total: 0,
+    };
+
+    setFormState({
+      ...formState,
+      items: formState.items.concat(newItem),
+    });
+  };
+
   const handleChange = (e) => {
     console.log(" I handle change ");
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
   };
   return (
     <div className="invoice-form">
@@ -67,7 +89,7 @@ const InvoiceForm = () => {
             <label htmlFor="city">Clients Name</label>
             <input
               onChange={(e) => handleChange(e)}
-              name="clientName"
+              name="clientsName"
               type="text"
               value={formState.clientsName}
             />
@@ -76,7 +98,7 @@ const InvoiceForm = () => {
             <label htmlFor="city">Clients Email</label>
             <input
               onChange={(e) => handleChange(e)}
-              name="clientEmail"
+              name="clientsEmail"
               type="text"
               value={formState.clientsEmail}
             />
@@ -116,25 +138,41 @@ const InvoiceForm = () => {
           <div className="form-group">
             <label htmlFor="invoiceDate">Invoice Date</label>
             <input
+              onChange={(e) => handleChange(e)}
               type="date"
               name="invoiceDate"
               id=""
               value={formState.invoiceDate}
             />
             <label htmlFor="paymentTerms">Payment Terms</label>
-            <select value={formState.paymentTerms} name="paymentTerms" id="">
+            <select
+              onChange={(e) => handleChange(e)}
+              value={formState.paymentTerms}
+              name="paymentTerms"
+              id=""
+            >
               <option value="30">Net 30 Days</option>
             </select>
           </div>
           <div className="form-group">
             <label htmlFor="description">Project Description</label>
-            <input type="text" />
+            <input
+              name="description"
+              onChange={(e) => handleChange(e)}
+              type="text"
+            />
           </div>
         </fieldset>
         <div className="item-list">
           <h2>Item List</h2>
-          <div className="item-list__items"></div>
-          <button>Add New Item</button>
+          <div className="item-list__items">
+            {formState.items.map((item) => (
+              <div key={item.id} className="form-group">
+                <label htmlFor="itemName">Item Name</label>
+              </div>
+            ))}
+          </div>
+          <button onClick={(e) => addInvoiceItem(e)}>Add New Item</button>
         </div>
         <div className="invoice-form__buttons">
           <Button>Discard</Button>
