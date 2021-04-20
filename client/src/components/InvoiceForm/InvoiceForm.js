@@ -38,7 +38,7 @@ const InvoiceForm = () => {
     });
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e, id) => {
     console.log(" I handle change ");
     setFormState({
       ...formState,
@@ -167,8 +167,35 @@ const InvoiceForm = () => {
           <h2>Item List</h2>
           <div className="item-list__items">
             {formState.items.map((item) => (
-              <div key={item.id} className="form-group">
-                <label htmlFor="itemName">Item Name</label>
+              <div key={item.id} className="item-list__item">
+                <div className="form-group">
+                  <label htmlFor="itemName">Item Name</label>
+                  <input
+                    onChange={(e) => handleChange(e, item.id)}
+                    type="text"
+                    value={item.itemName}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="qty">Qty</label>
+                  <input
+                    onChange={(e) => handleChange(e, item.id)}
+                    type="number"
+                    value={item.qty}
+                  />
+                  <label htmlFor="price">Price</label>
+                  <input
+                    onChange={(e) => handleChange(e, item.id)}
+                    type="text"
+                    value={item.price}
+                  />
+                  <label htmlFor="total">Total</label>
+                  <input
+                    onChange={(e) => handleChange(e, item.id)}
+                    type="text"
+                    value={item.total}
+                  />
+                </div>
               </div>
             ))}
           </div>
