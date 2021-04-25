@@ -40,10 +40,35 @@ const InvoiceForm = () => {
 
   const handleChange = (e, id) => {
     console.log(" I handle change ");
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value,
-    });
+    console.log(e.target.name);
+    if (id) {
+      console.log("id was passed, im in an item form");
+      let index = 0,
+        newItem;
+      for (let i = 0; i < formState.items.length; i++) {
+        if (formState.items[i].id === id) {
+          index = i;
+          newItem = Object.assign({}, formState.items[i]);
+        }
+      }
+
+      newItem[e.target.name] = e.target.value;
+
+      let newItems = [...formState.items];
+      newItems[index] = newItem;
+
+      let newFormState = {
+        ...formState,
+        items: newItems,
+      };
+
+      setFormState(newFormState);
+    } else {
+      setFormState({
+        ...formState,
+        [e.target.name]: e.target.value,
+      });
+    }
   };
   return (
     <div className="invoice-form">
@@ -171,6 +196,7 @@ const InvoiceForm = () => {
                 <div className="form-group">
                   <label htmlFor="itemName">Item Name</label>
                   <input
+                    name="itemName"
                     onChange={(e) => handleChange(e, item.id)}
                     type="text"
                     value={item.itemName}
@@ -179,18 +205,21 @@ const InvoiceForm = () => {
                 <div className="form-group">
                   <label htmlFor="qty">Qty</label>
                   <input
+                    name="qty"
                     onChange={(e) => handleChange(e, item.id)}
                     type="number"
                     value={item.qty}
                   />
                   <label htmlFor="price">Price</label>
                   <input
+                    name="price"
                     onChange={(e) => handleChange(e, item.id)}
                     type="text"
                     value={item.price}
                   />
                   <label htmlFor="total">Total</label>
                   <input
+                    name="total"
                     onChange={(e) => handleChange(e, item.id)}
                     type="text"
                     value={item.total}
