@@ -70,6 +70,24 @@ const InvoiceForm = () => {
       });
     }
   };
+
+  const deleteItem = (e, id) => {
+    e.preventDefault();
+    console.log("Ible been clicked");
+    const itemId = id;
+    let changedItems = formState.items.filter((item) => {
+      if (item.id !== itemId) {
+        return item;
+      }
+    });
+
+    console.log(changedItems);
+
+    const changedFormState = Object.assign({}, formState);
+    changedFormState.items = changedItems;
+    setFormState(changedFormState);
+  };
+
   return (
     <div className="invoice-form">
       <form>
@@ -225,6 +243,7 @@ const InvoiceForm = () => {
                     value={item.total}
                   />
                 </div>
+                <button onClick={(e) => deleteItem(e, item.id)}>Delete</button>
               </div>
             ))}
           </div>
